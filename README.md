@@ -1,6 +1,6 @@
-# 📦 Typesense Data Migration 
+# 📦 Typesense Data Migration (Copy/Move)
 
-A simple process to copy   your Typesense data from one instance to another. Perfect for migrating from Typesense Cloud to your own Docker instance or between any Typesense environments.
+A simple process to copy or move your Typesense data from one instance to another. Perfect for migrating from Typesense Cloud to your own Docker instance or between any Typesense environments.
 
 ![Typesense Logo](https://typesense.org/assets/images/typesense-logo.svg)
 
@@ -12,12 +12,13 @@ A simple process to copy   your Typesense data from one instance to another. Per
 3. Click on "Export Schema" button
 4. Save the schema file (it will be a JSON file)
 
-### Step 2: Copy Data from Source
+### Step 2: Download Data from Source
 ```bash
 ./download_typesense_data.sh -k YOUR_API_KEY -h YOUR_HOST -c YOUR_COLLECTION
 ```
+This will create a backup file in `.jsonl` format.
 
-### Step 3: Paste Data to Destination
+### Step 3: Import/Upload Data to Destination
 ```bash
 ./migrate_final_upload.sh
 ```
@@ -42,13 +43,14 @@ A simple process to copy   your Typesense data from one instance to another. Per
 - Click "Export Schema" and save the JSON file
 - Keep this file safe - you'll need it for the import
 
-### 2. Copy Data from Cloud
+### 2. Download Data from Cloud
 ```bash
-# Example: Copy from Typesense Cloud
+# Example: Download from Typesense Cloud
 ./download_typesense_data.sh -k abc123 -h api.typesense.org -c products
 ```
+This will generate a `.jsonl` file containing your collection data.
 
-### 3. Paste to Docker Instance
+### 3. Import to Docker Instance
 ```bash
 # Set your Docker instance details
 export TYPESENSE_API_KEY="your_docker_api_key"
@@ -56,7 +58,7 @@ export TYPESENSE_HOST="http://localhost:8108"
 export COLLECTION_NAME="products"
 export SCHEMA_FILE="schema.json"  # The schema file you downloaded from Typesense Cloud
 
-# Run the paste script
+# Run the import script
 ./migrate_final_upload.sh
 ```
 
@@ -64,19 +66,20 @@ export SCHEMA_FILE="schema.json"  # The schema file you downloaded from Typesens
 
 ## 📝 Complete Example
 
-Let's say you want to copy your data from Typesense Cloud to your local Docker:
+Let's say you want to move your data from Typesense Cloud to your local Docker:
 
 1. **Get Schema from Cloud Dashboard:**
    - Log in to Typesense Cloud
    - Go to your collection
    - Export and save the schema JSON file
 
-2. **Copy Data from Cloud:**
+2. **Download Data from Cloud:**
 ```bash
 ./download_typesense_data.sh -k cloud_key -h api.typesense.org -c my_collection
 ```
+This will create a `.jsonl` file with your collection data.
 
-3. **Paste to Docker:**
+3. **Import to Docker:**
 ```bash
 export TYPESENSE_API_KEY="docker_key"
 export TYPESENSE_HOST="http://localhost:8108"
@@ -97,6 +100,7 @@ That's it! Your data is now copied to the new location. 🎉
 4. Check your network connection
 5. Verify your API keys work
 6. The process might take some time depending on your data size
+7. Data is exported in `.jsonl` format (JSON Lines) for efficient processing
 
 ---
 
