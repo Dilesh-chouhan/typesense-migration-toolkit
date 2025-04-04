@@ -35,7 +35,7 @@ This will create a backup file in `.jsonl` format.
 
 ---
 
-## 🔧 Detailed Setup Guide
+## 🔧 Step-by-Step Guide with Examples
 
 ### 1. Get Schema from Typesense Cloud
 - Log in to [Typesense Cloud](https://cloud.typesense.org)
@@ -62,29 +62,26 @@ export SCHEMA_FILE="schema.json"  # The schema file you downloaded from Typesens
 ./migrate_final_upload.sh
 ```
 
----
+### 📝 Real-World Example
+Here's a complete example of migrating a collection named "products":
 
-## 📝 Complete Example
-
-Let's say you want to move your data from Typesense Cloud to your local Docker:
-
-1. **Get Schema from Cloud Dashboard:**
+1. **Export Schema:**
    - Log in to Typesense Cloud
-   - Go to your collection
-   - Export and save the schema JSON file
+   - Go to "products" collection
+   - Export and save as `products-schema.json`
 
-2. **Download Data from Cloud:**
+2. **Download Data:**
 ```bash
-./download_typesense_data.sh -k cloud_key -h api.typesense.org -c my_collection
+./download_typesense_data.sh -k cloud_key -h api.typesense.org -c products
 ```
-This will create a `.jsonl` file with your collection data.
+This creates `products.jsonl`
 
 3. **Import to Docker:**
 ```bash
 export TYPESENSE_API_KEY="docker_key"
 export TYPESENSE_HOST="http://localhost:8108"
-export COLLECTION_NAME="my_collection"
-export SCHEMA_FILE="schema.json"  # Your downloaded schema file
+export COLLECTION_NAME="products"
+export SCHEMA_FILE="products-schema.json"
 ./migrate_final_upload.sh
 ```
 
