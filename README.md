@@ -2,7 +2,6 @@
 
 A simple process to copy or move your Typesense data from one instance to another. Perfect for migrating from Typesense Cloud to your own Docker instance or between any Typesense environments.
 
-![Typesense Logo]([https://images.seeklogo.com/logo-png/50/1/typesense-logo-png_seeklogo-500350.png])
 
 ## 🚀 Quick Migration Guide
 
